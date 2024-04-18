@@ -1,0 +1,414 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080/api
+  description: Generated server url
+paths:
+  /return/{bookId}/patron/{patronId}:
+    put:
+      tags:
+      - borrow-controller
+      operationId: returnBook
+      parameters:
+      - name: bookId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: patronId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+  /patrons/{patronId}:
+    get:
+      tags:
+      - patron-controller
+      operationId: getPatron
+      parameters:
+      - name: patronId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Patron'
+    put:
+      tags:
+      - patron-controller
+      operationId: updatePatron
+      parameters:
+      - name: patronId
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patron'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Patron'
+    delete:
+      tags:
+      - patron-controller
+      operationId: deletePatron
+      parameters:
+      - name: patronId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+  /books/{bookId}:
+    get:
+      tags:
+      - book-controller
+      operationId: getBook
+      parameters:
+      - name: bookId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Book'
+    put:
+      tags:
+      - book-controller
+      operationId: updateBook
+      parameters:
+      - name: bookId
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Book'
+    delete:
+      tags:
+      - book-controller
+      operationId: deleteBook
+      parameters:
+      - name: bookId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+  /patrons:
+    get:
+      tags:
+      - patron-controller
+      operationId: listPatrons
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Patron'
+    post:
+      tags:
+      - patron-controller
+      operationId: addPatron
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Patron'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Patron'
+  /borrow/{bookId}/patron/{patronId}:
+    post:
+      tags:
+      - borrow-controller
+      operationId: borrowBook
+      parameters:
+      - name: bookId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: patronId
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BorrowRecord'
+  /books:
+    get:
+      tags:
+      - book-controller
+      operationId: listBooks
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      tags:
+      - book-controller
+      operationId: addBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+        required: true
+      responses:
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Book'
+components:
+  schemas:
+    Book:
+      required:
+      - isbn
+      - title
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        author:
+          type: string
+        publicationYear:
+          type: string
+        isbn:
+          type: string
+    BorrowRecord:
+      type: object
+      properties:
+        id:
+          type: integer
+        patron:
+          $ref: '#/components/schemas/Patron'
+        book:
+          $ref: '#/components/schemas/Book'
+        borrowDate:
+          type: string
+          format: date-time
+        returnDate:
+          type: string
+          format: date-time
+    Patron:
+      required:
+      - name
+      - phone
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        phone:
+          pattern: "^\\d{11}$"
+          type: string
+        borrowRecords:
+          type: array
+          items:
+            $ref: '#/components/schemas/BorrowRecord'
