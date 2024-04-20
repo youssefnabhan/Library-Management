@@ -2,7 +2,6 @@ package com.personal.librarymanagement.controllers;
 
 import com.personal.librarymanagement.models.Book;
 import com.personal.librarymanagement.services.BookService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

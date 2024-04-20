@@ -1,11 +1,8 @@
 package com.personal.librarymanagement.handlers;
 
-import com.personal.librarymanagement.exceptions.BookNotFoundException;
 import com.personal.librarymanagement.exceptions.NotFoundException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
-import jakarta.validation.Path;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

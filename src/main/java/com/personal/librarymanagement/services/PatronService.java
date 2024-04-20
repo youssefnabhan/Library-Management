@@ -2,7 +2,6 @@ package com.personal.librarymanagement.services;
 
 import com.personal.librarymanagement.exceptions.BookNotFoundException;
 import com.personal.librarymanagement.exceptions.PatronNotFoundException;
-import com.personal.librarymanagement.models.Book;
 import com.personal.librarymanagement.models.Patron;
 import com.personal.librarymanagement.repositories.PatronRepository;
 import org.springframework.beans.BeanUtils;
