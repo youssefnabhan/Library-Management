@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class globalExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String NotFoundHandler(NotFoundException ex){
+    public String notFoundHandler(NotFoundException ex){
         return ex.getMessage();
     }
 

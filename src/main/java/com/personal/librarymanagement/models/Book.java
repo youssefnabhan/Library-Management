@@ -28,7 +28,6 @@ public class Book {
     @Column(name = "publication_year")
     private String publicationYear;
 
-    @Column(unique = true)
     @ISBN
     @NotBlank
     private String isbn;
